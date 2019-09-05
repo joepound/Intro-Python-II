@@ -26,9 +26,9 @@ earlier adventurers. The only exit is to the south."""),
 
 # Add items to rooms
 
-room['outside'].add_item(Item("flower", "A lovely flower."))
+room['outside'].add_item(Item("flower", "a lovely flower"))
 room['treasure'].add_item(
-    Item("doubloon", "A doubloon from a treasure chest.")
+    Item("doubloon", "a doubloon from a treasure chest")
 )
 
 

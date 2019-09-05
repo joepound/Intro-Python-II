@@ -21,9 +21,9 @@ class Player:
         self.items.append(item)
 
     def show_inventory(self):
-        print("Your current inventory:")
         if len(self.items) == 0:
-            print("Your inventory is empty.")
+            print("\nYour inventory is currently empty.\n")
         else:
+            print("\nYour current inventory:\n")
             for item in self.items:
                 print(f"{item.name} - {item.description}")
