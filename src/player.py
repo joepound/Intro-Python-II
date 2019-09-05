@@ -6,3 +6,8 @@ class Player:
 
     def add_item(self, item):
         self.items.append(item)
+
+    def show_inventory(self):
+        print("Your current inventory:")
+        for item in self.items:
+            print(f"{item.name} - {item.description}")
