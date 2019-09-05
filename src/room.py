@@ -12,5 +12,8 @@ class Room:
         self.w_to = w_to
         self.items = []
 
+    def __getattr__(self, attr):
+        return None
+
     def add_item(self, item):
         self.items.append(item)

@@ -3,6 +3,9 @@ class Item:
         self.name = name
         self.description = description
 
+    def __getattr__(self, attr):
+        return None
+
     def on_take(self):
         print(f'You picked up "{self.name}".')
 
