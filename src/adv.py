@@ -70,5 +70,8 @@ while True:
             break
         elif input_ != "":
             print("Not a valid command.")
-    elif input_args_count != 0:
-        print("Targeted commands will be added later.")
+    elif input_args_count == 2:
+        action, target = input_args
+        print(action, target)
+    else:
+        print("Not a valid command.")
