@@ -1,5 +1,5 @@
 class Room:
-    # Same directional order for adjacent rooms as CSS order (TRBL)
+    # Same directional order for adjacent rooms as CSS TRBL order (clockwise)
     def __init__(
         self, name, description,
         n_to=None, e_to=None, s_to=None, w_to=None
