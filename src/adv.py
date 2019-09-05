@@ -64,6 +64,8 @@ while True:
             p.move_to_room(p.current_room.s_to)
         elif input_ == "w":
             p.move_to_room(p.current_room.w_to)
+        elif input_ == "i":
+            p.show_inventory()
         elif input_ == "q":
             break
         else:
