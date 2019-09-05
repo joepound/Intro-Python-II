@@ -10,3 +10,7 @@ class Room:
         self.e_to = e_to
         self.s_to = s_to
         self.w_to = w_to
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
