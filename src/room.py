@@ -1,7 +1,3 @@
-# Implement a class to hold room information. This should have name and
-# description attributes.
-
-
 class Room:
     # Same order for adjacent rooms as HTML -> top-right-bottom-left (TRBL)
     def __init__(
