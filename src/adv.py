@@ -51,3 +51,22 @@ p = Player(input("Enter your name: ").strip(), room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+while True:
+    input_args = input().strip().lower().split(" ")[:2]
+    input_args_count = len(input_args)
+    if input_args_count == 1:
+        input_ = input_args[0]
+        if input_ == "n":
+            p.move_to_room(p.current_room.n_to)
+        elif input_ == "e":
+            p.move_to_room(p.current_room.e_to)
+        elif input_ == "s":
+            p.move_to_room(p.current_room.s_to)
+        elif input_ == "w":
+            p.move_to_room(p.current_room.w_to)
+        elif input_ == "q":
+            break
+        else:
+            print("Not a valid command.")
+    else:
+        print("Targeted commands will be added later.")
