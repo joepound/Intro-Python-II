@@ -7,7 +7,7 @@ class Item:
         return None
 
     def on_take(self):
-        print(f'You picked up "{self.name}".')
+        print(f'\nYou picked up a "{self.name}".\n')
 
     def on_drop(self):
-        print(f'You dropped "{self.name}".')
+        print(f'\nYou dropped a "{self.name}".\n')

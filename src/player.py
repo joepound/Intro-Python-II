@@ -27,3 +27,11 @@ class Player:
             print("\nYour current inventory:\n")
             for item in self.items:
                 print(f"{item.name} - {item.description}")
+
+    def take_item(self, target):
+        for item in self.current_room.items:
+            if item.name == target:
+                self.items.append(item)
+                item.on_take()
+                return
+        print("\nNo such item in this room\n")

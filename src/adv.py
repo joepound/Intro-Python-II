@@ -87,5 +87,9 @@ while True:
             print("Not a valid command.")
     elif input_args_count == 2:
         action, target = input_args
+        if action == "get" or action == "take":
+            p.take_item(target)
+        else:
+            print("Not a valid command.")
     else:
         print("Not a valid command.")
