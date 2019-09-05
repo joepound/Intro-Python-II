@@ -1,4 +1,5 @@
 from item import Item
+from lightsource import LightSource
 from player import Player
 from room import Room
 
@@ -27,6 +28,7 @@ earlier adventurers. The only exit is to the south."""),
 # Add items to rooms
 
 room['outside'].add_item(Item("flower", "a lovely flower"))
+room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
     Item("doubloon", "a doubloon from a treasure chest")
 )
@@ -79,7 +81,7 @@ while True:
             p.move_to_room(p.current_room.s_to)
         elif input_ == "w":
             p.move_to_room(p.current_room.w_to)
-        elif input_ == "i":
+        elif input_ == "i" or input_ == "inventory":
             p.show_inventory()
         elif input_ == "q":
             break
