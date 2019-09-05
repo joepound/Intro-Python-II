@@ -1,3 +1,4 @@
+from item import Item
 from player import Player
 from room import Room
 
@@ -21,6 +22,14 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
+
+
+# Add items to rooms
+
+room['outside'].add_item(Item("flower", "A lovely flower."))
+room['treasure'].add_item(
+    Item("doubloon", "A doubloon from a treasure chest.")
+)
 
 
 # Link rooms together
@@ -72,6 +81,5 @@ while True:
             print("Not a valid command.")
     elif input_args_count == 2:
         action, target = input_args
-        print(action, target)
     else:
         print("Not a valid command.")
