@@ -68,7 +68,7 @@ while True:
             p.show_inventory()
         elif input_ == "q":
             break
-        elif input == "":
+        elif input_ != "":
             print("Not a valid command.")
-    else:
+    elif input_args_count != 0:
         print("Targeted commands will be added later.")
