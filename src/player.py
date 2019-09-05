@@ -8,7 +8,10 @@ class Player:
         return None
 
     def move_to_room(self, room):
-        self.current_room = room
+        if room is None:
+            print("You cannot move in that direction right now.")
+        else:
+            self.current_room = room
 
     def add_item(self, item):
         self.items.append(item)
