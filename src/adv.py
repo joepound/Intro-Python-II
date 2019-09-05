@@ -52,7 +52,7 @@ p = Player(input("Enter your name: ").strip(), room['outside'])
 #
 # If the user enters "q", quit the game.
 while True:
-    input_args = input().strip().lower().split(" ")[:2]
+    input_args = input().strip().lower().split(" ")
     input_args_count = len(input_args)
     if input_args_count == 1:
         input_ = input_args[0]
@@ -68,7 +68,7 @@ while True:
             p.show_inventory()
         elif input_ == "q":
             break
-        else:
+        elif input == "":
             print("Not a valid command.")
     else:
         print("Targeted commands will be added later.")
