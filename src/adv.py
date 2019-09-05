@@ -89,6 +89,8 @@ while True:
         action, target = input_args
         if action == "get" or action == "take":
             p.take_item(target)
+        elif action == "drop":
+            p.drop_item(target)
         else:
             print("Not a valid command.")
     else:

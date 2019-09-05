@@ -24,14 +24,23 @@ class Player:
         if len(self.items) == 0:
             print("\nYour inventory is currently empty.\n")
         else:
-            print("\nYour current inventory:\n")
+            print("\nYour current inventory:")
             for item in self.items:
-                print(f"{item.name} - {item.description}")
+                print(f"    - {item.name} ({item.description})")
+            print()
 
     def take_item(self, target):
         for item in self.current_room.items:
             if item.name == target:
-                self.items.append(item)
                 item.on_take()
+                self.items.append(item)
                 return
-        print("\nNo such item in this room\n")
+        print("\nNo such item in this room.\n")
+
+    def drop_item(self, target):
+        for i in range(len(self.items)):
+            if self.items[i].name == target:
+                self.items[i].on_drop()
+                del self.items[i]
+                return
+        print("\nYou do not currently have that item.\n")
