@@ -4,6 +4,9 @@ class Player:
         self.current_room = current_room
         self.items = []
 
+    def move_to_room(self, room):
+        self.current_room = room
+
     def add_item(self, item):
         self.items.append(item)
 
