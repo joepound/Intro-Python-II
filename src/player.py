@@ -7,11 +7,15 @@ class Player:
     def __getattr__(self, attr):
         return None
 
+    def show_location(self):
+        self.current_room.show_overview()
+
     def move_to_room(self, room):
         if room is None:
-            print("You cannot move in that direction right now.")
+            print("\nYou cannot move in that direction right now.\n")
         else:
             self.current_room = room
+            self.show_location()
 
     def add_item(self, item):
         self.items.append(item)

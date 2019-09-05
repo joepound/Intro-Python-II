@@ -48,7 +48,11 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-p = Player(input("Enter your name: ").strip(), room['outside'])
+
+name = ""
+while name == "":
+    name = input("\nEnter your name: ").strip()
+p = Player(name, room['outside'])
 
 # Write a loop that:
 #
@@ -60,6 +64,8 @@ p = Player(input("Enter your name: ").strip(), room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+p.show_location()
 while True:
     input_args = input().strip().lower().split(" ")
     input_args_count = len(input_args)
