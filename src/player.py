@@ -66,3 +66,18 @@ class Player:
                     break
             if not has_other_light_source:
                 self.has_light_source = False
+
+    def attack(self, target):
+        if self.current_room.is_light or self.has_light_source:
+            for monster in self.current_room.monsters:
+                if monster.name == target:
+                    # Arbitrary attack power value to be changed for weapons
+                    print(f"\nYou raise your fists and attack the monster!\n")
+                    monster.on_attack(20)
+                    return
+            print("\nNo such monster in the current room.\n")
+        else:
+            print(
+                "\nTry as you might, you are unable to attack accurately in "
+                "the dark!\n"
+            )
