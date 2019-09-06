@@ -8,18 +8,28 @@ class Player:
         self.items = []
         self.has_light_source = False
 
+        #   ==================
+        #   || CHEAT VALUES ||
+        #   ==================
+
+        self.is_helios = False
+
     def __getattr__(self, attr):
         return None
 
     def show_location(self):
-        self.current_room.show_overview(self.has_light_source)
+        self.current_room.show_overview(
+            self.has_light_source or self.is_helios
+        )
 
     def move_to_room(self, room):
         if room is None:
             print("\nYou cannot move in that direction right now.\n")
         else:
             self.current_room = room
-            self.current_room.show_overview(self.has_light_source)
+            self.current_room.show_overview(
+                self.has_light_source or self.is_helios
+            )
 
     def add_item(self, item):
         self.items.append(item)
@@ -34,7 +44,8 @@ class Player:
             print()
 
     def take_item(self, target):
-        if self.current_room.is_light or self.has_light_source:
+        if (self.current_room.is_light or self.has_light_source or
+                self.is_helios):
             if len(self.current_room.monsters) == 0:
                 for item in self.current_room.items:
                     if item.name == target:
@@ -81,7 +92,8 @@ class Player:
                 self.has_light_source = False
 
     def attack(self, target):
-        if self.current_room.is_light or self.has_light_source:
+        if (self.current_room.is_light or self.has_light_source or
+                self.is_helios):
             for monster in self.current_room.monsters:
                 if monster.name == target:
                     # Arbitrary attack power value to be changed for weapons
@@ -94,3 +106,18 @@ class Player:
                 "\nTry as you might, you are unable to attack accurately in "
                 "the dark!\n"
             )
+
+    #   ===================
+    #   || CHEAT METHODS ||
+    #   ===================
+
+    def set_helios(self, flag):
+        if flag == "1":
+            self.is_helios = True
+            print("\nHelios the sun god has blessed you with eternal light!\n")
+            return True
+        elif flag == "0":
+            self.is_helios = False
+            print("\nHelios has forsaken you.\n")
+            return True
+        return False

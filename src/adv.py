@@ -125,6 +125,15 @@ while True:
             p.drop_item(target)
         elif action == "attack":
             p.attack(target)
+
+        #   ============
+        #   || CHEATS ||
+        #   ============
+
+        elif action == "helios":
+            if not p.set_helios(target):
+                print("\nNot a valid command.\n")
+
         else:
             print("\nNot a valid command.\n")
     else:
