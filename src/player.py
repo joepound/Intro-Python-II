@@ -37,19 +37,26 @@ class Player:
         if self.current_room.is_light or self.has_light_source:
             if len(self.current_room.monsters) == 0:
                 for item in self.current_room.items:
-                    if item.name == target and item.on_take():
-                        if isinstance(item, LightSource):
-                            self.has_light_source = True
-                        self.items.append(item)
-                    return
+                    if item.name == target:
+                        is_grabbable, is_win_condition = item.on_take()
+                        if is_grabbable:
+                            if is_win_condition:
+                                return (True, item.name)
+                            if isinstance(item, LightSource):
+                                self.has_light_source = True
+                            self.items.append(item)
+                        return (False, item.name)
                 print("\nNo such item in this room.\n")
+                return (False, None)
             else:
                 print(
                     "\nYou cannot grab an item with monsters around - you'll "
                     "be helpless!\n"
                 )
+                return (False, None)
         else:
             print("\nGood luck finding that in the dark!\n")
+            return (False, None)
 
     def drop_item(self, target):
         has_found_item = False

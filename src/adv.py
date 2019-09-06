@@ -49,7 +49,7 @@ room = {
 room['outside'].add_item(Item("flower", "a lovely flower", False))
 room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
-    Item("doubloon", "a doubloon from a treasure chest")
+    Item("doubloon", "a doubloon from a treasure chest", True, True)
 )
 
 
@@ -114,7 +114,13 @@ while True:
     elif input_args_count == 2:
         action, target = input_args
         if action == "get" or action == "take":
-            p.take_item(target)
+            is_win_condition, item_name = p.take_item(target)
+            if is_win_condition:
+                print(
+                    f'Victory! You have found the legendary {item_name}!\n'
+                    f'The name "{p.name}" will be remembered forever!'
+                )
+                break
         elif action == "drop":
             p.drop_item(target)
         elif action == "attack":
