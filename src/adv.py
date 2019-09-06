@@ -156,8 +156,8 @@ while True:
         action = input_args[0]
         if action == "get" or action == "take":
             target = " ".join(input_args[1:]).strip()
-            is_win_condition, item_name = p.take_item(target)
-            if is_win_condition:
+            has_won, item_name = p.take_item(target)
+            if has_won:
                 print(
                     f'Victory! You have found the legendary {item_name}!\n'
                     f'\nThe name "{p.name}" will be remembered forever!\n'

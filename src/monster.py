@@ -8,6 +8,18 @@ class Monster:
     def __getattr__(self, attr):
         return None
 
+    def __str__(self):
+        return (
+            f"name: {self.name} | hp: {self.hp} | "
+            f"description: {self.description} | room: {self.room}"
+        )
+
+    def __repr__(self):
+        return (
+            f"{type(self).__name__}({repr(self.name)}, {repr(self.hp)}, "
+            f"{repr(self.description)}, {repr(self.room)})"
+        )
+
     def on_attack(self, dmg, is_one_hit_kill):
         if is_one_hit_kill:
             self.hp = 0

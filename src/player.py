@@ -22,6 +22,25 @@ class Player:
     def __getattr__(self, attr):
         return None
 
+    def __str__(self):
+        return (
+            f"name: {self.name} | current_room: {self.current_room} | "
+            f"items: {self.items} | "
+            f"has_light_source: {self.has_light_source} | "
+            f"last_used: {self.last_used} | "
+            f"last_attack_target: {self.last_attack_target}"
+            f"is_helios: {self.is_helios} | has_god_mode: {self.has_god_mode}"
+        )
+
+    def __repr__(self):
+        return (
+            f"{type(self).__name__}({repr(self.name)}, "
+            f"{repr(self.current_room)}, {repr(self.items)}, "
+            f"{repr(self.has_light_source)}, {repr(self.last_used)}, "
+            f"{repr(self.last_attack_target)}, {repr(self.is_helios)}, "
+            f"{repr(self.has_god_mode)})"
+        )
+
     def show_location(self):
         self.current_room.show_overview(
             self.has_light_source or self.is_helios
