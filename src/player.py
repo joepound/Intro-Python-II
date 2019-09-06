@@ -121,3 +121,11 @@ class Player:
             print("\nHelios has forsaken you.\n")
             return True
         return False
+
+    def teleport(self, target, rooms):
+        for room in rooms.values():
+            if room.name.lower() == target:
+                self.current_room = room
+                print("\nWhat kind of compass are you using???\n")
+                return True
+        return False

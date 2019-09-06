@@ -134,6 +134,10 @@ while True:
             if not p.set_helios(target):
                 print("\nNot a valid command.\n")
 
+        elif action == "weast":
+            if not p.teleport(target, room):
+                print("\nNot a valid command.\n")
+
         else:
             print("\nNot a valid command.\n")
     else:
