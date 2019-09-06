@@ -17,6 +17,7 @@ class Player:
         #   ==================
 
         self.is_helios = False
+        self.has_god_mode = False
 
     def __getattr__(self, attr):
         return None
@@ -116,7 +117,10 @@ class Player:
                 if monster.name == target:
                     weapon_used = input("\nAttack with what? ").lower().strip()
                     if weapon_used == "fists":
-                        print("\nYou're not serious, are you?\n")
+                        if self.has_god_mode:
+                            monster.on_attack(float("inf"), True)
+                        else:
+                            print("\nYou're not serious, are you?\n")
                     else:
                         if weapon_used == "it":
                             if self.last_used is None:
@@ -134,7 +138,9 @@ class Player:
                                             weapon_used
                                         )
                                     )
-                                    monster.on_attack(item.ap)
+                                    monster.on_attack(
+                                        item.ap, self.has_god_mode
+                                    )
                                     self.last_attack_target = monster
                                 else:
                                     print("\nThat item is not a weapon.\n")
@@ -157,7 +163,7 @@ class Player:
             self.is_helios = True
             print("\nHelios the sun god has blessed you with eternal light!\n")
             return True
-        elif flag == "0":
+        elif flag == "0" and self.is_helios:
             self.is_helios = False
             print("\nHelios has forsaken you.\n")
             return True
@@ -169,4 +175,15 @@ class Player:
                 self.current_room = room
                 print("\nWhat kind of compass are you using???\n")
                 return True
+        return False
+
+    def set_god_mode(self, flag):
+        if flag == "1":
+            self.has_god_mode = True
+            print("\nYou have ascended to godhood!\n")
+            return True
+        elif flag == "0" and self.has_god_mode:
+            print("\nYou foolishly decided to give up your godly power.\n")
+            self.has_god_mode = False
+            return True
         return False

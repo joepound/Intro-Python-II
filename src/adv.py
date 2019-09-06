@@ -110,6 +110,7 @@ move_count = 0
 #
 # If the user enters "q", quit the game.
 
+print()
 p.show_location()
 while True:
     move_count += 1
@@ -158,8 +159,8 @@ while True:
             if is_win_condition:
                 print(
                     f'Victory! You have found the legendary {item_name}!\n'
-                    f'The name "{p.name}" will be remembered forever!\n\n'
-                    f'You completed your adventure in {move_count} moves.\n'
+                    f'\nThe name "{p.name}" will be remembered forever!\n'
+                    f'\nYou completed your adventure in {move_count} moves.\n'
                 )
                 break
         elif action == "drop":
@@ -180,6 +181,11 @@ while True:
         elif action == "weast":
             target = " ".join(input_args[1:]).strip()
             if not p.teleport(target, room):
+                print("\nNot a valid command.\n")
+
+        elif action == "godmode":
+            target = " ".join(input_args[1:]).strip()
+            if input_args_count != 2 or not p.set_god_mode(input_args[1]):
                 print("\nNot a valid command.\n")
 
         else:
