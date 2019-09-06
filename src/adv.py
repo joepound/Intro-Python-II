@@ -145,7 +145,8 @@ while True:
                 '"drop" target -> drop the specified item\n'
                 '"drop it" -> drop the last grabbed/used item\n'
                 '"attack" target -> attack the specified monster\n'
-                '"attack it" -> attack the last specified monster\n'
+                '"attack it" -> attack the last specified monster\n\n'
+                'Every command (even bad input & "?") counts - play wisely!\n'
             )
         elif input_ == "q" or input_ == "quit":
             break
