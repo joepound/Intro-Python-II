@@ -1,4 +1,5 @@
 from lightsource import LightSource
+from weapon import Weapon
 
 
 class Player:
@@ -84,7 +85,7 @@ class Player:
                 has_found_item = True
                 break
         if not has_found_item:
-            print("\nYou do not currently have that item.\n")
+            print("\nYou do not currently have any such item.\n")
         elif has_dropped_light_source:
             has_other_light_source = False
             for i in range(len(self.items)):
@@ -99,9 +100,23 @@ class Player:
                 self.is_helios):
             for monster in self.current_room.monsters:
                 if monster.name == target:
-                    # Arbitrary attack power value to be changed for weapons
-                    print(f"\nYou raise your fists and attack the monster!\n")
-                    monster.on_attack(20)
+                    weapon_used = input("\nAttack with what? ").lower().strip()
+                    if weapon_used == "fists":
+                        print("\nYou're not serious, are you?\n")
+                    else:
+                        for item in self.items:
+                            if item.name == weapon_used:
+                                if isinstance(item, Weapon):
+                                    print(
+                                        "\nYou attack with your {}!\n".format(
+                                            weapon_used
+                                        )
+                                    )
+                                    monster.on_attack(item.ap)
+                                else:
+                                    print("\nThat item is not a weapon.\n")
+                                return
+                        print("\nYou do not currently have any such weapon.\n")
                     return
             print("\nNo such monster in the current room.\n")
         else:

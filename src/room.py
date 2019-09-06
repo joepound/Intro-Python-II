@@ -52,7 +52,7 @@ class Room:
     def remove_monster(self, target):
         for i in range(len(self.monsters)):
             if self.monsters[i].name == target.name:
-                print(f"You have vanquished {target.name}!\n")
+                print(f'You have vanquished the monster "{target.name}"!\n')
                 del self.monsters[i]
                 return
         print(

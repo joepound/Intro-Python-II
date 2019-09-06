@@ -10,6 +10,6 @@ class Monster:
 
     def on_attack(self, dmg):
         self.hp -= dmg
-        print(f'Monster "{self.name}" took 20 damage.\n')
+        print(f'Monster "{self.name}" took {dmg} damage.\n')
         if self.hp <= 0:
             self.room.remove_monster(self)
