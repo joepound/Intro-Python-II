@@ -109,7 +109,7 @@ class Player:
                 self.is_helios):
             if target == "it":
                 if self.last_attack_target is None:
-                    print("\nI don't know which monster you mean.\n")
+                    print("\nI don't know which target you mean to attack.\n")
                     return
                 target = self.last_attack_target.name
             for monster in self.current_room.monsters:
