@@ -113,6 +113,7 @@ move_count = 0
 p.show_location()
 while True:
     move_count += 1
+    print('\n[type "?" for help]\n')
     input_args = input().strip().lower().split(" ")
     input_args_count = len(input_args)
     if input_args_count == 1:
@@ -129,7 +130,23 @@ while True:
             p.show_location()
         elif input_ == "i" or input_ == "inventory":
             p.show_inventory()
-        elif input_ == "q":
+        elif input_ == "?":
+            print(
+                '\n"n" | "north" -> move north\n'
+                '"e" | "east" -> move east\n'
+                '"s" | "south" -> move south\n'
+                '"w" | "west" -> move north\n'
+                '"l" | "location" -> show current location\n'
+                '"i" | "inventory" -> show current inventory\n'
+                '"q" | "quit" -> exit the adventure game\n'
+                '"?" -> help\n\n'
+                '"get" | "grab" target -> attempt to grab the specified item\n'
+                '"drop" target -> drop the specified item\n'
+                '"drop it" -> drop the last grabbed/used item\n'
+                '"attack" target -> attack the specified monster\n'
+                '"attack it" -> attack the last specified monster\n'
+            )
+        elif input_ == "q" or input_ == "quit":
             break
         elif input_ != "":
             print("\nNot a valid command.\n")
