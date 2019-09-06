@@ -7,14 +7,14 @@ from room import Room
 # Declare all the rooms
 
 room = {
-    'outside':  Room(
+    'outside': Room(
         "Outside Cave Entrance",
         "North of you, the cave mount beckons a sign is right in front of you."
         'It says "do not pick the flowers".',
         True
     ),
 
-    'foyer':    Room(
+    'foyer': Room(
         "Foyer",
         "Dim light filters in from the south. Dusty passages run north and "
         "east.",
@@ -29,7 +29,7 @@ room = {
         True
     ),
 
-    'narrow':   Room(
+    'narrow': Room(
         "Narrow Passage",
         "The narrow passage bends here from west to north. The smell of gold "
         "permeates the air.",
@@ -41,6 +41,13 @@ room = {
         "You found the long-lost treasure chamber!",
         False
     ),
+
+    'armory': Room(
+        "Armory",
+        "The place is filled with the stench of bloodied metal."
+        "Perhaps there's something that can be useful here....",
+        False
+    )
 }
 
 
@@ -51,6 +58,8 @@ room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
     Item("doubloon", "a doubloon from a treasure chest", True, True)
 )
+room['armory'].add_item(Item("rusty sword", "an old, worn out sword"))
+room['armory'].add_item(Item("silver sword", "a sword in pristine condition"))
 
 
 # Add monsters to rooms
@@ -68,6 +77,8 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+room['treasure'].e_to = room['armory']
+room['armory'].w_to = room['treasure']
 
 #
 # Main
@@ -79,6 +90,12 @@ name = ""
 while name == "":
     name = input("\nEnter your name: ").strip()
 p = Player(name, room['outside'])
+
+
+# Add move count for keeping score
+
+move_count = 0
+
 
 # Write a loop that:
 #
@@ -93,6 +110,7 @@ p = Player(name, room['outside'])
 
 p.show_location()
 while True:
+    move_count += 1
     input_args = input().strip().lower().split(" ")
     input_args_count = len(input_args)
     if input_args_count == 1:
@@ -121,7 +139,8 @@ while True:
             if is_win_condition:
                 print(
                     f'Victory! You have found the legendary {item_name}!\n'
-                    f'The name "{p.name}" will be remembered forever!'
+                    f'The name "{p.name}" will be remembered forever!\n\n'
+                    f'You completed your adventure in {move_count} moves.\n'
                 )
                 break
         elif action == "drop":
