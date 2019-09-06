@@ -8,6 +8,7 @@ class Player:
         self.current_room = current_room
         self.items = []
         self.has_light_source = False
+        self.last_used = None
 
         #   ==================
         #   || CHEAT VALUES ||
@@ -57,6 +58,7 @@ class Player:
                             if isinstance(item, LightSource):
                                 self.has_light_source = True
                             self.items.append(item)
+                            self.last_used = item
                             self.current_room.remove_item(item)
                             return (False, item.name)
                         return (False, None)
@@ -73,6 +75,12 @@ class Player:
             return (False, None)
 
     def drop_item(self, target):
+        if target == "it":
+            if self.last_used is None:
+                print("\nI don't know which item you mean.\n")
+                return
+            target = self.last_used.name
+            self.last_used = None
         has_found_item = False
         has_dropped_light_source = False
         for i in range(len(self.items)):
@@ -104,6 +112,12 @@ class Player:
                     if weapon_used == "fists":
                         print("\nYou're not serious, are you?\n")
                     else:
+                        if weapon_used == "it":
+                            if self.last_used is None:
+                                print("\nI don't know which weapon you mean.\n")
+                                return
+                            weapon_used = self.last_used.name
+                            self.last_used = None
                         for item in self.items:
                             if item.name == weapon_used:
                                 if isinstance(item, Weapon):
