@@ -116,8 +116,10 @@ class Player:
                             if self.last_used is None:
                                 print("\nI don't know which weapon you mean.\n")
                                 return
+                            if not isinstance(self.last_used, Weapon):
+                                print("\nThat item is not a weapon.\n")
+                                return
                             weapon_used = self.last_used.name
-                            self.last_used = None
                         for item in self.items:
                             if item.name == weapon_used:
                                 if isinstance(item, Weapon):
