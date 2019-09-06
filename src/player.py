@@ -9,6 +9,7 @@ class Player:
         self.items = []
         self.has_light_source = False
         self.last_used = None
+        self.last_attack_target = None
 
         #   ==================
         #   || CHEAT VALUES ||
@@ -106,6 +107,11 @@ class Player:
     def attack(self, target):
         if (self.current_room.is_light or self.has_light_source or
                 self.is_helios):
+            if target == "it":
+                if self.last_attack_target is None:
+                    print("\nI don't know which monster you mean.\n")
+                    return
+                target = self.last_attack_target.name
             for monster in self.current_room.monsters:
                 if monster.name == target:
                     weapon_used = input("\nAttack with what? ").lower().strip()
@@ -129,6 +135,7 @@ class Player:
                                         )
                                     )
                                     monster.on_attack(item.ap)
+                                    self.last_attack_target = monster
                                 else:
                                     print("\nThat item is not a weapon.\n")
                                 return
