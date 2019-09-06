@@ -105,6 +105,8 @@ while True:
             p.move_to_room(p.current_room.s_to)
         elif input_ == "w":
             p.move_to_room(p.current_room.w_to)
+        elif input_ == "l" or input_ == "location":
+            p.show_location()
         elif input_ == "i" or input_ == "inventory":
             p.show_inventory()
         elif input_ == "q":
