@@ -1,4 +1,5 @@
 from lightsource import LightSource
+from treasure import Treasure
 from weapon import Weapon
 
 
@@ -52,9 +53,8 @@ class Player:
             if len(self.current_room.monsters) == 0:
                 for item in self.current_room.items:
                     if item.name == target:
-                        is_grabbable, is_win_condition = item.on_take()
-                        if is_grabbable:
-                            if is_win_condition:
+                        if item.on_take():
+                            if isinstance(item, Treasure):
                                 return (True, item.name)
                             if isinstance(item, LightSource):
                                 self.has_light_source = True
@@ -120,7 +120,7 @@ class Player:
                     else:
                         if weapon_used == "it":
                             if self.last_used is None:
-                                print("\nI don't know which weapon you mean.\n")
+                                print("\nI don't know which item you mean.\n")
                                 return
                             if not isinstance(self.last_used, Weapon):
                                 print("\nThat item is not a weapon.\n")

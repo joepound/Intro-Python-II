@@ -3,6 +3,7 @@ from lightsource import LightSource
 from monster import Monster
 from player import Player
 from room import Room
+from treasure import Treasure
 from weapon import Weapon
 
 # Declare all the rooms
@@ -57,7 +58,7 @@ room = {
 room['outside'].add_item(Item("flower", "a lovely flower", False))
 room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
-    Item("doubloon", "a doubloon from a treasure chest", True, True)
+    Treasure("doubloon", "a doubloon from a treasure chest", True)
 )
 room['armory'].add_item(Weapon("rusty sword", "an old, worn out sword", 10))
 room['armory'].add_item(Weapon("silver sword", "a sharp silver sword", 25))
