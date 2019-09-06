@@ -111,9 +111,10 @@ while True:
             break
         elif input_ != "":
             print("\nNot a valid command.\n")
-    elif input_args_count == 2:
-        action, target = input_args
+    elif input_args_count >= 2:
+        action = input_args[0]
         if action == "get" or action == "take":
+            target = " ".join(input_args[1:]).strip()
             is_win_condition, item_name = p.take_item(target)
             if is_win_condition:
                 print(
@@ -122,8 +123,10 @@ while True:
                 )
                 break
         elif action == "drop":
+            target = " ".join(input_args[1:]).strip()
             p.drop_item(target)
         elif action == "attack":
+            target = " ".join(input_args[1:]).strip()
             p.attack(target)
 
         #   ============
@@ -131,10 +134,11 @@ while True:
         #   ============
 
         elif action == "helios":
-            if not p.set_helios(target):
+            if input_args_count != 2 or not p.set_helios(input_args[1]):
                 print("\nNot a valid command.\n")
 
         elif action == "weast":
+            target = " ".join(input_args[1:]).strip()
             if not p.teleport(target, room):
                 print("\nNot a valid command.\n")
 
