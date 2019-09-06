@@ -97,13 +97,13 @@ while True:
     input_args_count = len(input_args)
     if input_args_count == 1:
         input_ = input_args[0]
-        if input_ == "n":
+        if input_ == "n" or input_ == "north":
             p.move_to_room(p.current_room.n_to)
-        elif input_ == "e":
+        elif input_ == "e" or input_ == "east":
             p.move_to_room(p.current_room.e_to)
-        elif input_ == "s":
+        elif input_ == "s" or input_ == "south":
             p.move_to_room(p.current_room.s_to)
-        elif input_ == "w":
+        elif input_ == "w" or input_ == "west":
             p.move_to_room(p.current_room.w_to)
         elif input_ == "l" or input_ == "location":
             p.show_location()
