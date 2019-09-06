@@ -1,5 +1,6 @@
 from item import Item
 from lightsource import LightSource
+from monster import Monster
 from player import Player
 from room import Room
 
@@ -32,6 +33,11 @@ room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
     Item("doubloon", "a doubloon from a treasure chest")
 )
+
+
+# Add monsters to rooms
+
+room['treasure'].add_monster(Monster("Red Shirt The Troll", 100))
 
 
 # Link rooms together

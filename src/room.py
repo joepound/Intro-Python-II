@@ -12,6 +12,7 @@ class Room:
         self.s_to = s_to
         self.w_to = w_to
         self.items = []
+        self.monsters = []
 
     def __getattr__(self, attr):
         return None
@@ -29,3 +30,17 @@ class Room:
 
     def add_item(self, item):
         self.items.append(item)
+
+    def add_monster(self, monster):
+        self.monsters.append(monster)
+
+    def remove_monster(self, target):
+        for i in range(len(self.monsters)):
+            if self.monsters[i].name == target.name:
+                print(f"\nYou have vanquished {target.name}!\n")
+                del self.monsters[i]
+                return
+        print(
+            f'\nError: Could not delete non-existent monster "{target.name}""'
+            f'in room "{self.name}."\n'
+        )
