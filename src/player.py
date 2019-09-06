@@ -56,7 +56,9 @@ class Player:
                             if isinstance(item, LightSource):
                                 self.has_light_source = True
                             self.items.append(item)
-                        return (False, item.name)
+                            self.current_room.remove_item(item)
+                            return (False, item.name)
+                        return (False, None)
                 print("\nNo such item in this room.\n")
                 return (False, None)
             else:
@@ -77,6 +79,7 @@ class Player:
                 self.items[i].on_drop()
                 if isinstance(self.items[i], LightSource):
                     has_dropped_light_source = True
+                self.current_room.add_item(self.items[i])
                 del self.items[i]
                 has_found_item = True
                 break

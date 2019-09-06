@@ -39,6 +39,12 @@ class Room:
     def add_item(self, item):
         self.items.append(item)
 
+    def remove_item(self, target):
+        for i in range(len(self.items)):
+            if self.items[i].name == target.name:
+                del self.items[i]
+                return
+
     def add_monster(self, monster):
         monster.room = self
         self.monsters.append(monster)
