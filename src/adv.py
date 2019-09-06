@@ -56,7 +56,7 @@ room = {
 # Add items to rooms
 
 room['outside'].add_item(Item("flower", "a lovely flower", False))
-room['foyer'].add_item(LightSource("torch", "a burning torch"))
+room['foyer'].add_item(LightSource("lamp", "a handheld lamp"))
 room['treasure'].add_item(
     Treasure("doubloon", "a doubloon from a treasure chest", True)
 )
