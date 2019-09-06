@@ -62,7 +62,7 @@ class Player:
         elif has_dropped_light_source:
             has_other_light_source = False
             for i in range(len(self.items)):
-                if isInstance(self.items[i], LightSource):
+                if isinstance(self.items[i], LightSource):
                     has_dropped_light_source = True
                     break
             if not has_other_light_source:
