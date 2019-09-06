@@ -6,8 +6,9 @@ from room import Room
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", True),
+    'outside':  Room("Outside Cave Entrance", """North of you, the cave mount beckons.
+A sign is right in front of you.
+It says "do not pick the flowers".""", True),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", True),
@@ -26,7 +27,7 @@ chamber!""", True),
 
 # Add items to rooms
 
-room['outside'].add_item(Item("flower", "a lovely flower"))
+room['outside'].add_item(Item("flower", "a lovely flower", False))
 room['foyer'].add_item(LightSource("torch", "a burning torch"))
 room['treasure'].add_item(
     Item("doubloon", "a doubloon from a treasure chest")

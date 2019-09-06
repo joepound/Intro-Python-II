@@ -36,12 +36,11 @@ class Player:
     def take_item(self, target):
         if self.current_room.is_light or self.has_light_source:
             for item in self.current_room.items:
-                if item.name == target:
-                    item.on_take()
+                if item.name == target and item.on_take():
                     if isinstance(item, LightSource):
                         self.has_light_source = True
                     self.items.append(item)
-                    return
+                return
             print("\nNo such item in this room.\n")
         else:
             print("\nGood luck finding that in the dark!\n")
